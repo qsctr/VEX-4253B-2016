@@ -9,21 +9,21 @@
 
 task main() {
 
-	int x, y, r;
+    int x, y, r;
 
-	while (true) {
+    while (true) {
 
-		x = vexRT[Ch1];
-		y = vexRT[Ch2];
-		r = vexRT[Ch4];
+        x = vexRT[Ch1];
+        y = vexRT[Ch2];
+        r = vexRT[Ch4];
 
-		motor[FL] = - y - x - r;
-		motor[FR] = + y - x - r;
-		motor[BR] = + y + x - r;
-		motor[BL] = - y + x - r;
+        motor[FL] = - y - x - r;
+        motor[FR] = + y - x - r;
+        motor[BR] = + y + x - r;
+        motor[BL] = - y + x - r;
 
-		sleep(20);
+        sleep(20);
 
-	}
+    }
 
 }
