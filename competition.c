@@ -49,31 +49,29 @@ void drive() {
 }
 
 void shooter() {
-	if (vexRT[Btn5D]) {
-		motor[shooter1] = 60;
-		motor[shooter2] = 60;
-		motor[shooter3] = 60;
-		motor[shooter4] = 60;
-	} else {
-		motor[shooter1] = 0;
-		motor[shooter2] = 0;
-		motor[shooter3] = 0;
-		motor[shooter4] = 0;
-	}
+
+    motor[s1] = motor[s2] = motor[s3] = motor[s4] = vexRT[Btn5D] * 60;
+
 }
 
 void pre_auton() {
+
 	bStopTasksBetweenModes = true;
+
 }
 
 task autonomous() {
+
 	AutonomousCodePlaceholderForTesting();
+
 }
 
 task usercontrol() {
+
 	while (true) {
 		drive();
 		shooter();
 		sleep(20);
 	}
+
 }
