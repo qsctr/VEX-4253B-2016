@@ -37,9 +37,7 @@
 
 void drive() {
 
-    int x = vexRT[Ch1];
-    int y = vexRT[Ch2];
-    int r = vexRT[Ch4];
+    int x = vexRT[Ch1], y = vexRT[Ch2], r = vexRT[Ch4];
 
     motor[FL] = - y - x - r;
     motor[FR] = + y - x - r;
