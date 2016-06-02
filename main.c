@@ -1,3 +1,4 @@
+#pragma config(Sensor, in1,    Direct,         sensorPotentiometer)
 #pragma config(Motor,  port2,           FR,            tmotorVex393TurboSpeed_MC29, openLoop)
 #pragma config(Motor,  port3,           BR,            tmotorVex393TurboSpeed_MC29, openLoop)
 #pragma config(Motor,  port4,           BL,            tmotorVex393TurboSpeed_MC29, openLoop, reversed)
@@ -52,6 +53,18 @@ void shooter() {
 
 }
 
+void dd() {
+    int lowerLimit = 500;
+    int upperLimit = 2400;
+
+    if(SensorValue(Direct)<upperLimit && vexRT[Btn5U])
+        motor[s1] = motor[s2] = motor[s3] = motor[s4] = 60;
+    else if (SensorValue(Direct)>lowerLimit && vexRT[Btn5D])
+        motor[s1] = motor[s2] = motor[s3] = motor[s4] = -60;
+    else
+        motor[s1] = motor[s2] = motor[s3] = motor[s4] = 0;
+}
+
 void pre_auton() {
 
     bStopTasksBetweenModes = true;
@@ -67,8 +80,9 @@ task autonomous() {
 task usercontrol() {
 
     while (true) {
+        dd();
         drive();
-        shooter();
+        //shooter();
         sleep(20);
     }
 
