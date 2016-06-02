@@ -47,13 +47,14 @@ void drive() {
 
 }
 
-void shooter() {
+void slip_gear() {
 
     motor[s1] = motor[s2] = motor[s3] = motor[s4] = vexRT[Btn5D] * 60;
 
 }
 
-void dd() {
+void direct_drive() {
+
     int lowerLimit = 800;
     int upperLimit = 1100;
 
@@ -63,6 +64,7 @@ void dd() {
         motor[s1] = motor[s2] = motor[s3] = motor[s4] = -127;
     else
         motor[s1] = motor[s2] = motor[s3] = motor[s4] = 0;
+
 }
 
 void pre_auton() {
@@ -80,9 +82,9 @@ task autonomous() {
 task usercontrol() {
 
     while (true) {
-        dd();
-        //drive();
-        //shooter();
+        // drive();
+        direct_drive();
+        // slip_gear();
     }
 
 }
