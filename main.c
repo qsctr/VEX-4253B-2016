@@ -54,13 +54,13 @@ void shooter() {
 }
 
 void dd() {
-    int lowerLimit = 500;
-    int upperLimit = 2400;
+    int lowerLimit = 800;
+    int upperLimit = 1100;
 
-    if(SensorValue(Direct)<upperLimit && vexRT[Btn5U])
-        motor[s1] = motor[s2] = motor[s3] = motor[s4] = 60;
-    else if (SensorValue(Direct)>lowerLimit && vexRT[Btn5D])
-        motor[s1] = motor[s2] = motor[s3] = motor[s4] = -60;
+    if (SensorValue(Direct) < upperLimit && vexRT[Btn5U])
+        motor[s1] = motor[s2] = motor[s3] = motor[s4] = 127;
+    else if (SensorValue(Direct) > lowerLimit && vexRT[Btn5D])
+        motor[s1] = motor[s2] = motor[s3] = motor[s4] = -127;
     else
         motor[s1] = motor[s2] = motor[s3] = motor[s4] = 0;
 }
@@ -81,9 +81,8 @@ task usercontrol() {
 
     while (true) {
         dd();
-        drive();
+        //drive();
         //shooter();
-        sleep(20);
     }
 
 }
