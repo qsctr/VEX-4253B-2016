@@ -17,6 +17,9 @@
 
 #include "Vex_Competition_Includes.c"
 
+// motors listed in clockwise direction
+// open side of the robot is front
+
 /*
 
 =========================================================================================================
@@ -33,58 +36,25 @@
                                                                                            (by Bretton)
 */
 
-// motors listed in clockwise direction
-// open side of the robot is front
+#include "common.c"
 
-void drive() {
+#include "autonomous/autonomous.c"
 
-    int x = vexRT[Ch4], y = vexRT[Ch3], r = vexRT[Ch1] / 2;
-
-    motor[FL] = - y - x - r;
-    motor[FR] = - y + x + r;
-    motor[BR] = - y - x + r;
-    motor[BL] = + y - x + r;
-
-}
-
-void slip_gear() {
-
-    motor[s1] = motor[s2] = motor[s3] = motor[s4] = vexRT[Btn5D] * 60;
-
-}
-
-void direct_drive() {
-
-    int lowerLimit = 800;
-    int upperLimit = 1100;
-
-    if (SensorValue(Direct) < upperLimit && vexRT[Btn5U])
-        motor[s1] = motor[s2] = motor[s3] = motor[s4] = 127;
-    else if (SensorValue(Direct) > lowerLimit && vexRT[Btn5D])
-        motor[s1] = motor[s2] = motor[s3] = motor[s4] = -127;
-    else
-        motor[s1] = motor[s2] = motor[s3] = motor[s4] = 0;
-
-}
-
-void pre_auton() {
-
-    bStopTasksBetweenModes = true;
-
-}
+#include "driver_control/base.c"
+#include "driver_control/direct_drive.c"
+// #include "driver_control/slip_gear.c"
 
 task autonomous() {
 
-    AutonomousCodePlaceholderForTesting();
+    run_autonomous();
 
 }
 
 task usercontrol() {
 
     while (true) {
-        // drive();
-        direct_drive();
-        // slip_gear();
+        // drive(); controller is broken right now
+        shooter();
     }
 
 }
