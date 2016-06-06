@@ -41,8 +41,8 @@
 #include "autonomous/autonomous.c"
 
 #include "driver_control/base.c"
-#include "driver_control/direct_drive.c"
-// #include "driver_control/slip_gear.c"
+// #include "driver_control/direct_drive.c"
+#include "driver_control/slip_gear.c"
 
 task autonomous() {
 
@@ -53,7 +53,7 @@ task autonomous() {
 task usercontrol() {
 
     while (true) {
-        // drive(); controller is broken right now
+        drive();
         shooter();
     }
 

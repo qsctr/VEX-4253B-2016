@@ -1,5 +1,5 @@
 void shooter() {
 
-    set_shooter(vexRT[Btn5D] * 60);
+    set_shooter(vexRT[Btn5D] * 127);
 
 }
