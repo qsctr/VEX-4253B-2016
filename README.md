@@ -1,12 +1,8 @@
-# VEX 4194B 2016
-TAS Team
+# VEX 4194B 2016 (Taipei American School)
 
-We are not Projext, they have graduated!
+The code for team 4194B's VEX Starstruck robot
 
-We are VEXabyte
-
-This is our program for VEX Starstruck
-
+NOTE: We are not Projext, they have graduated. We are
 ```
 =========================================================================================================
    ___________________________________________________________________________________________________
@@ -19,5 +15,4 @@ This is our program for VEX Starstruck
   |___________________________________________________________________________________________________|
 
 =========================================================================================================
-                                                                                           (by Bretton)
 ```
