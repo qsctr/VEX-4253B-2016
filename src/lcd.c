@@ -1,6 +1,7 @@
 #define LCD_BUTTON_LEFT   1
 #define LCD_BUTTON_CENTER 2
 #define LCD_BUTTON_RIGHT  4
+#define LCD_BUTTON_NONE   0
 #define LCD_LINE_TOP      0
 #define LCD_LINE_BOTTOM   1
 #define LCD_POS_SHOOTER   1
@@ -68,27 +69,29 @@ void lcd_buttons() {
 
     static int prev = nLCDButtons;
 
-    if (prev != nLCDButtons) {
+    if (prev != nLCDButtons && nLCDButtons == LCD_BUTTON_NONE) {
+        switch (prev) {
 
-        if (nLCDButtons == LCD_BUTTON_LEFT) {
-            shooter_stop();
-            shooter_mode++;
-            if (shooter_mode == SHOOTER_MODE_OVER)
-                shooter_mode = SHOOTER_MODE_NONE;
-            lcd_shooter();
+	        case LCD_BUTTON_LEFT:
+	            shooter_stop();
+	            shooter_mode++;
+	            if (shooter_mode == SHOOTER_MODE_OVER)
+	                shooter_mode = SHOOTER_MODE_NONE;
+	            lcd_shooter();
+	            break;
+
+            case LCD_BUTTON_CENTER:
+                bLCDBacklight = !bLCDBacklight;
+                break;
+
+            case LCD_BUTTON_RIGHT:
+	            base_enabled = !base_enabled;
+	            if (!base_enabled)
+	                base_stop();
+	            lcd_base();
+	            break;
+
         }
-
-        if (nLCDButtons == LCD_BUTTON_CENTER) {
-            bLCDBacklight = !bLCDBacklight;
-        }
-
-        if (nLCDButtons == LCD_BUTTON_RIGHT) {
-            base_enabled = !base_enabled;
-            if (!base_enabled)
-                base_stop();
-            lcd_base();
-        }
-
     }
 
     prev = nLCDButtons;
