@@ -4,8 +4,12 @@ void pre_auton() {
 
 }
 
-void run_autonomous() {
+task autonomous() {
 
-    AutonomousCodePlaceholderForTesting();
+    lcd_init_auto();
+
+    while (true) {
+        lcd_auto();
+    }
 
 }
