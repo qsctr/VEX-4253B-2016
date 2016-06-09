@@ -90,6 +90,7 @@ void lcd_buttons() {
 	                base_stop();
 	            lcd_base();
 	            break;
+
         }
 
     prev = nLCDButtons;
