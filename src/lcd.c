@@ -69,7 +69,7 @@ void lcd_buttons() {
 
     static int prev = nLCDButtons;
 
-    if (prev != nLCDButtons && nLCDButtons == LCD_BUTTON_NONE) {
+    if (prev != nLCDButtons && nLCDButtons == LCD_BUTTON_NONE)
         switch (prev) {
 
 	        case LCD_BUTTON_LEFT:
@@ -90,9 +90,7 @@ void lcd_buttons() {
 	                base_stop();
 	            lcd_base();
 	            break;
-
         }
-    }
 
     prev = nLCDButtons;
 
@@ -106,7 +104,7 @@ void lcd_shooter() {
 
 void lcd_base() {
 
-    displayLCDString(LCD_LINE_BOTTOM, LCD_POS_BASE, base_enabled ? "ON " : "OFF");
+    displayLCDString(LCD_LINE_BOTTOM, LCD_POS_BASE, base_enabled ? " ON" : "OFF");
 
 }
 
