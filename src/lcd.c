@@ -72,19 +72,19 @@ void lcd_buttons() {
     if (prev != nLCDButtons && nLCDButtons == LCD_BUTTON_NONE)
         switch (prev) {
 
-	        case LCD_BUTTON_LEFT:
-	            shooter_mode_next();
-	            lcd_shooter();
-	            break;
+            case LCD_BUTTON_LEFT:
+                shooter_mode_next();
+                lcd_shooter();
+                break;
 
             case LCD_BUTTON_CENTER:
                 bLCDBacklight = !bLCDBacklight;
                 break;
 
             case LCD_BUTTON_RIGHT:
-	            base_toggle();
-	            lcd_base();
-	            break;
+                base_toggle();
+                lcd_base();
+                break;
 
         }
 
