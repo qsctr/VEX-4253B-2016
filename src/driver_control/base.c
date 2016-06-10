@@ -13,8 +13,10 @@ void base() {
 
 }
 
-void base_stop() {
+void base_toggle() {
 
-    motor[FL] = motor[FR] = motor[BR] = motor[BL] = 0;
+    base_enabled = !base_enabled;
+	if (!base_enabled)
+	    motor[FL] = motor[FR] = motor[BR] = motor[BL] = 0;
 
 }

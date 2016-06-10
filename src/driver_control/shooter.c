@@ -1,11 +1,13 @@
 void shooter_direct(void);
 void shooter_slip(void);
+void shooter_kicker(void);
 void shooter_set(int x);
 
 void shooter() {
 
     if (shooter_mode == SHOOTER_MODE_DIRECT) shooter_direct();
     if (shooter_mode == SHOOTER_MODE_SLIP)   shooter_slip();
+    if (shooter_mode == SHOOTER_MODE_KICKER) shooter_kicker();
 
 }
 
@@ -29,14 +31,23 @@ void shooter_slip() {
 
 }
 
+void shooter_kicker() {
+
+    shooter_set((vexRT[Btn5D] - vexRT[Btn5U]) * 127);
+
+}
+
 void shooter_set(int x) {
 
     motor[S1] = motor[S2] = motor[S3] = motor[S4] = x;
 
 }
 
-void shooter_stop() {
+void shooter_mode_next() {
 
     shooter_set(0);
+    shooter_mode++;
+    if (shooter_mode == SHOOTER_MODE_OVER)
+        shooter_mode = SHOOTER_MODE_NONE;
 
 }

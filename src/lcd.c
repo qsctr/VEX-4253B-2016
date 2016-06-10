@@ -73,10 +73,7 @@ void lcd_buttons() {
         switch (prev) {
 
 	        case LCD_BUTTON_LEFT:
-	            shooter_stop();
-	            shooter_mode++;
-	            if (shooter_mode == SHOOTER_MODE_OVER)
-	                shooter_mode = SHOOTER_MODE_NONE;
+	            shooter_mode_next();
 	            lcd_shooter();
 	            break;
 
@@ -85,9 +82,7 @@ void lcd_buttons() {
                 break;
 
             case LCD_BUTTON_RIGHT:
-	            base_enabled = !base_enabled;
-	            if (!base_enabled)
-	                base_stop();
+	            base_toggle();
 	            lcd_base();
 	            break;
 
