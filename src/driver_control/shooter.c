@@ -49,5 +49,6 @@ void shooter_mode_next() {
     shooter_mode++;
     if (shooter_mode == SHOOTER_MODE_OVER)
         shooter_mode = SHOOTER_MODE_NONE;
+    bMotorReflected[S2] = bMotorReflected[S4] = shooter_mode != SHOOTER_MODE_KICKER;
 
 }
