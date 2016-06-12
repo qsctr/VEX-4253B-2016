@@ -16,9 +16,9 @@ void shooter_direct() {
     static const int lowerLimit = 800;
     static const int upperLimit = 1100;
 
-    if (SensorValue(DirectPot) < upperLimit && vexRT[Btn5U])
+    if (SensorValue(ShooterPot) < upperLimit && vexRT[Btn5U])
         shooter_set(127);
-    else if (SensorValue(DirectPot) > lowerLimit && vexRT[Btn5D])
+    else if (SensorValue(ShooterPot) > lowerLimit && vexRT[Btn5D])
         shooter_set(-127);
     else
         shooter_set(0);
