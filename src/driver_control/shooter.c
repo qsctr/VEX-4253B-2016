@@ -33,7 +33,27 @@ void shooter_slip() {
 
 void shooter_kicker() {
 
-    shooter_set((vexRT[Btn5D] - vexRT[Btn5U]) * 127);
+    // shooter_set((vexRT[Btn5D] - vexRT[Btn5U]) * 127);
+
+    static int prev = vexRT[Btn7U];
+    static int step = 0;
+
+    switch (step) {
+        case 0: if (vexRT[Btn7U] > prev) {
+	        shooter_set(-50);
+	        step++;
+	    }
+        case 1: if (SensorValue(ShooterPot) > 2300) {
+            shooter_set(50);
+            step++;
+        }
+        case 2: if (SensorValue(ShooterPot) < 700) {
+            shooter_set(0);
+            step = 0;
+        }
+    }
+
+    prev = vexRT[Btn7U];
 
 }
 
