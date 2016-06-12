@@ -27,7 +27,7 @@ void shooter_direct() {
 
 void shooter_slip() {
 
-    shooter_set(vexRT[Btn5D] * 127);
+    shooter_set(vexRT[Btn5D] * 80);
 
 }
 
