@@ -13,8 +13,7 @@ void shooter() {
 
 void shooter_direct() {
 
-    static const int lowerLimit = 800;
-    static const int upperLimit = 1100;
+    static const int lowerLimit = 553, upperLimit = 1769;
 
     if (SensorValue(ShooterPot) < upperLimit && vexRT[Btn5U])
         shooter_set(127);
@@ -42,12 +41,13 @@ void shooter_kicker() {
         case 0: if (vexRT[Btn7U] > prev) {
 	        shooter_set(-50);
 	        step++;
+	        clearTimer(TIMER_SHOOTER);
 	    }
-        case 1: if (SensorValue(ShooterPot) > 2300) {
+        case 1: if (/* SensorValue(ShooterPot) > 2300 */ time1[TIMER_SHOOTER] > 300) {
             shooter_set(50);
             step++;
         }
-        case 2: if (SensorValue(ShooterPot) < 700) {
+        case 2: if (/* SensorValue(ShooterPot) < 700 */ time1[TIMER_SHOOTER] > 600) {
             shooter_set(0);
             step = 0;
         }

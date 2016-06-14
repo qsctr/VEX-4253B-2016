@@ -1,3 +1,5 @@
+#define TIMER_SHOOTER T1
+
 bool base_enabled = true;
 
 #define SHOOTER_MODE_NONE   0
