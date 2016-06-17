@@ -31,25 +31,22 @@ void dc_shooter_slip() {
 
 void dc_shooter_kicker() {
 
-    // shooter_set((vexRT[Btn5D] - vexRT[Btn5U]) * 127);
-
     static int prev = vexRT[Btn7U];
     static int step = 0;
 
-    switch (step) {
-        case 0: if (vexRT[Btn7U] > prev) {
-	        shooter_set(-50);
-	        step++;
-	        clearTimer(TIMER_SHOOTER);
-	    }
-        case 1: if (/* SensorValue(ShooterPot) > 2300 */ time1[TIMER_SHOOTER] > 500) {
-            shooter_set(50);
-            step++;
-        }
-        case 2: if (/* SensorValue(ShooterPot) < 700 */ time1[TIMER_SHOOTER] > 1000) {
-            shooter_set(0);
-            step = 0;
-        }
+    if (step == 0 && vexRT[Btn7U] > prev) {
+        shooter_set(127);
+	    step++;
+    }
+    if (step == 1 && SensorValue(ShooterPot) < 1200) {
+        shooter_set(0); // this is necessary, don't delete this
+        delay(500);
+        shooter_set(-50);
+        step++;
+    }
+    if (step == 2 && SensorValue(ShooterPot) > 1300) {
+        shooter_set(0);
+        step = 0;
     }
 
     prev = vexRT[Btn7U];
@@ -62,6 +59,6 @@ void dc_shooter_mode_next() {
     dc_shooter_mode++;
     if (dc_shooter_mode == DC_SHOOTER_MODE_OVER)
         dc_shooter_mode = DC_SHOOTER_MODE_NONE;
-    bMotorReflected[S2] = bMotorReflected[S4] = dc_shooter_mode != DC_SHOOTER_MODE_KICKER;
+    // bMotorReflected[S2] = bMotorReflected[S4] = dc_shooter_mode != DC_SHOOTER_MODE_KICKER;
 
 }

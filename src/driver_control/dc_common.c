@@ -1,5 +1,3 @@
-#define TIMER_SHOOTER T1
-
 bool dc_base_enabled = true;
 
 #define DC_SHOOTER_MODE_NONE   0
