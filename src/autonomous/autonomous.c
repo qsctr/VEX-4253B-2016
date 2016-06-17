@@ -1,3 +1,7 @@
+#include "a_lcd.c"
+
+void a_base(void);
+
 void pre_auton() {
 
     bStopTasksBetweenModes = true;
@@ -6,10 +10,18 @@ void pre_auton() {
 
 task autonomous() {
 
-    lcd_init_auto();
+    a_lcd_init();
+
+    a_base();
 
     while (true) {
-        lcd_auto();
+        a_lcd();
     }
 
+}
+
+void a_base() {
+    motor[FL] = motor[FR] = motor[BL] = motor[BR] = 127;
+    delay(1000);
+    motor[FL] = motor[FR] = motor[BL] = motor[BR] = 0;
 }

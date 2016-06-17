@@ -1,14 +1,16 @@
-#include "base.c"
-#include "shooter.c"
+#include "dc_common.c"
+#include "dc_base.c"
+#include "dc_shooter.c"
+#include "dc_lcd.c"
 
 task usercontrol() {
 
-    lcd_init_driver();
+    dc_lcd_init();
 
     while (true) {
-        base();
-        shooter();
-        lcd_driver();
+        dc_base();
+        dc_shooter();
+        dc_lcd();
     }
 
 }

@@ -4,10 +4,10 @@
 #pragma config(Sensor, I2C_2,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_3,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_4,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
-#pragma config(Motor,  port2,           FR,            tmotorVex393TurboSpeed_MC29, openLoop, encoderPort, I2C_2)
-#pragma config(Motor,  port3,           BR,            tmotorVex393TurboSpeed_MC29, openLoop, encoderPort, I2C_1)
+#pragma config(Motor,  port2,           FR,            tmotorVex393TurboSpeed_MC29, openLoop, reversed, encoderPort, I2C_2)
+#pragma config(Motor,  port3,           BR,            tmotorVex393TurboSpeed_MC29, openLoop, reversed, encoderPort, I2C_1)
 #pragma config(Motor,  port4,           BL,            tmotorVex393TurboSpeed_MC29, openLoop, reversed, encoderPort, I2C_4)
-#pragma config(Motor,  port5,           FL,            tmotorVex393TurboSpeed_MC29, openLoop, reversed, encoderPort, I2C_3)
+#pragma config(Motor,  port5,           FL,            tmotorVex393TurboSpeed_MC29, openLoop, encoderPort, I2C_3)
 #pragma config(Motor,  port6,           S1,            tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port7,           S2,            tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port8,           S3,            tmotorVex393_MC29, openLoop)
@@ -39,7 +39,7 @@
 #pragma userControlDuration(105)
 
 #include "Vex_Competition_Includes.c"
-#include "common.c"
+#include "shooter.c"
 #include "lcd.c"
 #include "autonomous/autonomous.c"
 #include "driver_control/driver_control.c"
