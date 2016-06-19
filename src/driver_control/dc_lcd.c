@@ -7,8 +7,8 @@ Example driver control LCD screen
 
 */
 
-#define DC_LCD_POS_SHOOTER   1
-#define DC_LCD_POS_BASE      12
+#define DC_LCD_POS_SHOOTER 1
+#define DC_LCD_POS_BASE    8
 
 void dc_lcd_init(void);
 void dc_lcd(void);
@@ -49,7 +49,7 @@ void dc_lcd_buttons() {
                 break;
 
             case LCD_BUTTON_RIGHT:
-                dc_base_toggle();
+                dc_base_mode_next();
                 dc_lcd_base();
                 break;
 
@@ -67,6 +67,6 @@ void dc_lcd_shooter() {
 
 void dc_lcd_base() {
 
-    displayLCDString(LCD_LINE_BOTTOM, DC_LCD_POS_BASE, dc_base_enabled ? " ON" : "OFF");
+    displayLCDString(LCD_LINE_BOTTOM, DC_LCD_POS_BASE, dc_base_mode_names[dc_base_mode]);
 
 }

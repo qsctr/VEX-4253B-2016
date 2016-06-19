@@ -6,6 +6,7 @@
 task usercontrol() {
 
     dc_lcd_init();
+    dc_base_gyro_init();
 
     while (true) {
         dc_base();

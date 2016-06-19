@@ -59,6 +59,5 @@ void dc_shooter_mode_next() {
     dc_shooter_mode++;
     if (dc_shooter_mode == DC_SHOOTER_MODE_OVER)
         dc_shooter_mode = DC_SHOOTER_MODE_NONE;
-    // bMotorReflected[S2] = bMotorReflected[S4] = dc_shooter_mode != DC_SHOOTER_MODE_KICKER;
 
 }

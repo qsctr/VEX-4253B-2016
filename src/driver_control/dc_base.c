@@ -1,8 +1,42 @@
+int straight(int ch);
+
+void dc_base_gyro_init() {
+
+    SensorType[GYRO_PORT] = sensorNone;
+    sleep(2000);
+    SensorType[GYRO_PORT] = sensorGyro;
+    sleep(2000);
+
+}
+
+int debug_gyro_deg; // for debug only
+
 void dc_base() {
 
-    if (dc_base_enabled) {
+    static int prev = vexRT[Btn8D];
+
+    if (prev && !vexRT[Btn8D]) {
+        dc_base_gyro_init();
+    }
+
+    if (dc_base_mode) {
 
 	    int x = vexRT[Ch4], y = vexRT[Ch3], r = vexRT[Ch1] / 2;
+
+	    if (dc_base_mode == DC_BASE_MODE_GYRO) {
+
+		    int raw_gyro = SensorValue[GYRO_PORT] / 10;
+		    if (raw_gyro < 0) raw_gyro += 360;
+
+		    debug_gyro_deg = raw_gyro; // for debug only
+
+		    float rad_gyro = degreesToRadians(raw_gyro);
+
+		    float temp = y * cos(rad_gyro) - x * sin(rad_gyro);
+	        x    = y * sin(rad_gyro) + x * cos(rad_gyro);
+	        y    = temp;
+
+	    }
 
 	    motor[FL] = + y + x + r;
 	    motor[FR] = + y - x - r;
@@ -11,12 +45,21 @@ void dc_base() {
 
     }
 
+    prev = vexRT[Btn8D];
+
 }
 
-void dc_base_toggle() {
+int straight(int ch) {
 
-    dc_base_enabled = !dc_base_enabled;
-	if (!dc_base_enabled)
-	    motor[FL] = motor[FR] = motor[BR] = motor[BL] = 0;
+    return abs(vexRT[ch]) < 10 ? 0 : vexRT[ch];
+
+}
+
+void dc_base_mode_next() {
+
+    motor[FL] = motor[FR] = motor[BR] = motor[BL] = 0;
+	dc_base_mode++;
+	if (dc_base_mode == DC_BASE_MODE_OVER)
+	    dc_base_mode = DC_BASE_MODE_OFF;
 
 }
