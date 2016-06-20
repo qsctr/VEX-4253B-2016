@@ -1,11 +1,13 @@
 int straight(int ch);
 
-void dc_base_gyro_init() {
+void dc_base_gyro_reset() {
 
+    dc_lcd_gyro_reset();
     SensorType[GYRO_PORT] = sensorNone;
     sleep(2000);
     SensorType[GYRO_PORT] = sensorGyro;
     sleep(2000);
+    lcd_clear();
 
 }
 
@@ -15,8 +17,8 @@ void dc_base() {
 
     static int prev = vexRT[Btn8D];
 
-    if (prev && !vexRT[Btn8D]) {
-        dc_base_gyro_init();
+    if (!prev && vexRT[Btn8D]) {
+        dc_base_gyro_reset();
     }
 
     if (dc_base_mode) {

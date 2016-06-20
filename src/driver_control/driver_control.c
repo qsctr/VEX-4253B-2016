@@ -6,12 +6,15 @@
 task usercontrol() {
 
     dc_lcd_init();
-    dc_base_gyro_init();
+    //dc_base_gyro_reset();
 
     while (true) {
-        dc_base();
-        dc_shooter();
-        dc_lcd();
+        //dc_base();
+        //dc_shooter();
+        //dc_lcd();
+
+        // for nathan
+        motor[port6] = motor[port7] = vexRT[Btn7D] * 127;
     }
 
 }
