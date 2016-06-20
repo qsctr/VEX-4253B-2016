@@ -12,12 +12,12 @@ void dc_shooter() {
 
 void dc_shooter_direct() {
 
-    static const int lowerLimit = 553, upperLimit = 1563;
+    static const int lowerLimit = 305, upperLimit = 1821;
 
     if (SensorValue(ShooterPot) < upperLimit && vexRT[Btn5U])
         shooter_set(127);
     else if (SensorValue(ShooterPot) > lowerLimit && vexRT[Btn5D])
-        shooter_set(-127);
+        shooter_set(-80);
     else
         shooter_set(0);
 
