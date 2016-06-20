@@ -7,7 +7,7 @@ void dc_base_gyro_reset() {
     sleep(2000);
     SensorType[GYRO_PORT] = sensorGyro;
     sleep(2000);
-    lcd_clear();
+    dc_lcd_init();
 
 }
 

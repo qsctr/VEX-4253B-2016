@@ -18,3 +18,4 @@ int dc_shooter_mode = DC_SHOOTER_MODE_DIRECT; // mode on startup
 void dc_base_mode_next(void);
 void dc_shooter_mode_next(void);
 void dc_lcd_gyro_reset(void);
+void dc_lcd_init(void);

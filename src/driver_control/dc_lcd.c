@@ -10,7 +10,6 @@ Example driver control LCD screen
 #define DC_LCD_POS_SHOOTER 1
 #define DC_LCD_POS_BASE    8
 
-void dc_lcd_init(void);
 void dc_lcd(void);
 void dc_lcd_buttons(void);
 void dc_lcd_shooter(void);
