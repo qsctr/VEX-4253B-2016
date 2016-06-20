@@ -70,3 +70,14 @@ void dc_lcd_base() {
     displayLCDString(LCD_LINE_BOTTOM, DC_LCD_POS_BASE, dc_base_mode_names[dc_base_mode]);
 
 }
+
+void dc_lcd_gyro_reset() {
+
+    /* |/ _ \ / |_) / \ |
+       |\_/  |  | \ \_/ | */
+
+    lcd_clear();
+    displayLCDString(LCD_LINE_TOP,    0, "/ _ \\ / |_) / \\");
+    displayLCDString(LCD_LINE_BOTTOM, 0, "\\_/  |  | \\ \\_/");
+
+}
