@@ -1,4 +1,4 @@
-int straight(int ch);
+static int straight(int ch);
 
 void dc_base_gyro_reset() {
 
@@ -11,7 +11,7 @@ void dc_base_gyro_reset() {
 
 }
 
-int debug_gyro_deg; // for debug only
+static int debug_gyro_deg; // for debug only
 
 void dc_base() {
 
@@ -51,7 +51,7 @@ void dc_base() {
 
 }
 
-int straight(int ch) {
+static int straight(int ch) {
 
     return abs(vexRT[ch]) < 10 ? 0 : vexRT[ch];
 

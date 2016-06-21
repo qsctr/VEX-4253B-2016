@@ -10,10 +10,9 @@ Example driver control LCD screen
 #define DC_LCD_POS_SHOOTER 1
 #define DC_LCD_POS_BASE    8
 
-void dc_lcd(void);
-void dc_lcd_buttons(void);
-void dc_lcd_shooter(void);
-void dc_lcd_base(void);
+static void dc_lcd_buttons(void);
+static void dc_lcd_shooter(void);
+static void dc_lcd_base(void);
 
 void dc_lcd_init() {
 
@@ -31,7 +30,7 @@ void dc_lcd() {
 
 }
 
-void dc_lcd_buttons() {
+static void dc_lcd_buttons() {
 
     static int prev = nLCDButtons;
 
@@ -58,13 +57,13 @@ void dc_lcd_buttons() {
 
 }
 
-void dc_lcd_shooter() {
+static void dc_lcd_shooter() {
 
     displayLCDString(LCD_LINE_BOTTOM, DC_LCD_POS_SHOOTER, dc_shooter_mode_names[dc_shooter_mode]);
 
 }
 
-void dc_lcd_base() {
+static void dc_lcd_base() {
 
     displayLCDString(LCD_LINE_BOTTOM, DC_LCD_POS_BASE, dc_base_mode_names[dc_base_mode]);
 

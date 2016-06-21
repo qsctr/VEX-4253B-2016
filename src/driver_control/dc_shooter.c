@@ -1,6 +1,6 @@
-void dc_shooter_direct(void);
-void dc_shooter_slip(void);
-void dc_shooter_kicker(void);
+static void dc_shooter_direct(void);
+static void dc_shooter_slip(void);
+static void dc_shooter_kicker(void);
 
 void dc_shooter() {
 
@@ -10,7 +10,7 @@ void dc_shooter() {
 
 }
 
-void dc_shooter_direct() {
+static void dc_shooter_direct() {
 
     static const int lowerLimit = 305, upperLimit = 1821;
 
@@ -23,13 +23,13 @@ void dc_shooter_direct() {
 
 }
 
-void dc_shooter_slip() {
+static void dc_shooter_slip() {
 
     shooter_set(vexRT[Btn5D] * 80);
 
 }
 
-void dc_shooter_kicker() {
+static void dc_shooter_kicker() {
 
     static int prev = vexRT[Btn7U];
     static int step = 0;

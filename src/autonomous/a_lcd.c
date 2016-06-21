@@ -7,9 +7,6 @@ Example autonomous LCD screen
 
 */
 
-void a_lcd_init(void);
-void a_lcd(void);
-
 void a_lcd_init() {
 
     lcd_clear();
