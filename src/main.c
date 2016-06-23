@@ -43,6 +43,7 @@
 // #define NATHAN_INTAKE
 
 #include "Vex_Competition_Includes.c"
+#include "common.c"
 #include "shooter.c"
 #include "lcd.c"
 #include "autonomous/autonomous.c"

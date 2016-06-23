@@ -1,5 +1,3 @@
-static int straight(int ch);
-
 void dc_base_gyro_reset() {
 
     dc_lcd_gyro_reset();
@@ -11,11 +9,13 @@ void dc_base_gyro_reset() {
 
 }
 
-static int debug_gyro_deg; // for debug only
-
 void dc_base() {
 
     static int prev = vexRT[Btn8D];
+
+    // for debug only, because static variables
+    // in functions show up as 'global' variables
+    static int raw_gyro;
 
     if (!prev && vexRT[Btn8D]) {
         dc_base_gyro_reset();
@@ -23,14 +23,18 @@ void dc_base() {
 
     if (dc_base_mode) {
 
-	    int x = vexRT[Ch4], y = vexRT[Ch3], r = vexRT[Ch1] / 2;
+#define str(ch) (abs(vexRT[ch]) < 10 ? 0 : vexRT[ch])
+
+        int x = str(Ch4),
+            y = str(Ch3),
+            r = vexRT[Ch1] / 2;
+
+#undef str
 
 	    if (dc_base_mode == DC_BASE_MODE_GYRO) {
 
-		    int raw_gyro = SensorValue[GYRO_PORT] / 10;
+		    /* int */ raw_gyro = SensorValue[GYRO_PORT] / 10;
 		    if (raw_gyro < 0) raw_gyro += 360;
-
-		    debug_gyro_deg = raw_gyro; // for debug only
 
 		    float rad_gyro = degreesToRadians(raw_gyro);
 
@@ -48,12 +52,6 @@ void dc_base() {
     }
 
     prev = vexRT[Btn8D];
-
-}
-
-static int straight(int ch) {
-
-    return abs(vexRT[ch]) < 10 ? 0 : vexRT[ch];
 
 }
 
