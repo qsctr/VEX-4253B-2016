@@ -17,6 +17,12 @@ task usercontrol() {
         dc_base();
         dc_shooter();
         dc_lcd();
+       if (vexRT[Btn7U]) {
+         motor[port6] = motor[port8] = 127;
+       }
+       if (vexRT[Btn7R]) {
+         motor[port6] = motor[port8] = -127;
+       }
 #endif
     }
 
