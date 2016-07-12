@@ -40,8 +40,6 @@
 #pragma autonomousDuration(15)
 #pragma userControlDuration(105)
 
-// #define NATHAN_INTAKE
-
 #include "Vex_Competition_Includes.c"
 #include "common.c"
 #include "shooter.c"

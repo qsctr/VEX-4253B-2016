@@ -11,13 +11,11 @@ Example driver control LCD screen
 #define DC_LCD_POS_BASE    8
 
 static void dc_lcd_buttons(void);
-static void dc_lcd_shooter(void);
 static void dc_lcd_base(void);
 
 void dc_lcd_init() {
 
     lcd_clear();
-    dc_lcd_shooter();
     dc_lcd_base();
     bLCDBacklight = true;
 
@@ -37,11 +35,6 @@ static void dc_lcd_buttons() {
     if (prev != nLCDButtons && nLCDButtons == LCD_BUTTON_NONE)
         switch (prev) {
 
-            case LCD_BUTTON_LEFT:
-                dc_shooter_mode_next();
-                dc_lcd_shooter();
-                break;
-
             case LCD_BUTTON_CENTER:
                 bLCDBacklight = !bLCDBacklight;
                 break;
@@ -54,12 +47,6 @@ static void dc_lcd_buttons() {
         }
 
     prev = nLCDButtons;
-
-}
-
-static void dc_lcd_shooter() {
-
-    displayLCDString(LCD_LINE_BOTTOM, DC_LCD_POS_SHOOTER, dc_shooter_mode_names[dc_shooter_mode]);
 
 }
 

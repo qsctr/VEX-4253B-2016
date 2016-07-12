@@ -13,8 +13,8 @@ void dc_base() {
 
     static int prev = vexRT[Btn8D];
 
-    // for debug only, because static variables
-    // in functions show up as 'global' variables
+    // for debug only, because static variables in functions
+    // show up as 'global' variables in the ROBOTC debugger
     static int raw_gyro;
 
     if (!prev && vexRT[Btn8D]) {
