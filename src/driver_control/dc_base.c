@@ -11,13 +11,13 @@ void dc_base_gyro_reset() {
 
 void dc_base() {
 
-    static int prev = vexRT[Btn8D];
+    static int prev = vexRT[Btn8R];
 
     // for debug only, because static variables in functions
     // show up as 'global' variables in the ROBOTC debugger
     static int raw_gyro;
 
-    if (!prev && vexRT[Btn8D]) {
+    if (!prev && vexRT[Btn8R]) {
         dc_base_gyro_reset();
     }
 
