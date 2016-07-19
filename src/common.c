@@ -1,4 +1,4 @@
-void shooter_set(int x);
+// void shooter_set(int x);
 
 #define LCD_BUTTON_LEFT   1
 #define LCD_BUTTON_CENTER 2

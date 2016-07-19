@@ -2,7 +2,9 @@ void dc_base_gyro_reset(void);
 void dc_base(void);
 void dc_base_mode_next(void);
 
-void dc_shooter(void);
+// void dc_shooter(void);
+
+void dc_dump(void);
 
 void dc_lcd_init(void);
 void dc_lcd(void);
