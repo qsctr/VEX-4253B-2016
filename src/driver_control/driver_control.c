@@ -13,6 +13,7 @@ task usercontrol() {
         // dc_shooter();
         dc_dump();
         dc_lcd();
+        sleep(20);
     }
 
 }
