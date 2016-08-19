@@ -15,4 +15,4 @@ void dc_lcd_gyro_reset(void);
 #define DC_BASE_MODE_GYRO      2
 #define DC_BASE_MODE_OVER      3
 const string dc_base_mode_names[] = {"    OFF", "NO GYRO", "   GYRO"};
-int dc_base_mode = DC_BASE_MODE_OFF;
+int dc_base_mode = DC_BASE_MODE_NO_GYRO;
