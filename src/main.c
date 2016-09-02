@@ -44,6 +44,7 @@
 
 #include "Vex_Competition_Includes.c"
 #include "common.c"
+#include "base.c"
 // #include "shooter.c"
 #include "dump.c"
 #include "lcd.c"

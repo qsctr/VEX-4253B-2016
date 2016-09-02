@@ -1,3 +1,8 @@
+#define BASE_SPEED_FULL   127
+
+void base_set(int fr, int br, int bl, int fl);
+void base_set(int power);
+
 // void shooter_set(int x);
 
 #define LCD_BUTTON_LEFT   1
