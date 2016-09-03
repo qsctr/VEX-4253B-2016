@@ -19,7 +19,7 @@
 #define GYRO_PORT in2
 
 // motors listed in clockwise direction
-// open side of the robot is front
+// dump is front
 
 /*
 
