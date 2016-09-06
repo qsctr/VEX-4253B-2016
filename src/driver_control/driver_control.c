@@ -1,6 +1,6 @@
 #include "dc_common.c"
 #include "dc_base.c"
-// #include "dc_shooter.c"
+#include "dc_lift.c"
 #include "dc_dump.c"
 #include "dc_lcd.c"
 
@@ -10,8 +10,8 @@ task usercontrol() {
 
     while (true) {
         dc_base();
-        // dc_shooter();
         dc_dump();
+        dc_lift();
         dc_lcd();
         sleep(20);
     }
