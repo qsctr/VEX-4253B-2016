@@ -1,16 +1,7 @@
-/*
-
-Example autonomous LCD screen
-
-|   7.20 VOLTS   |
-|   AUTONOMOUS   |
-
-*/
-
 task a_lcd() {
 
     lcd_clear();
-    displayLCDCenteredString(LCD_LINE_BOTTOM, "AUTONOMOUS");
+    displayLCDString(LCD_LINE_BOTTOM, 10, "AUTO");
     bLCDBacklight = true;
 
     while (1) {

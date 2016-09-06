@@ -1,12 +1,3 @@
-/*
-
-Example driver control LCD screen
-
-|   7.20 VOLTS   |
-| DIRECT      ON |
-
-*/
-
 #define DC_LCD_POS_SHOOTER 1
 #define DC_LCD_POS_BASE    8
 
