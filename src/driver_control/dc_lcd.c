@@ -1,5 +1,5 @@
 #define DC_LCD_POS_SHOOTER 1
-#define DC_LCD_POS_BASE    8
+#define DC_LCD_POS_BASE    9
 
 static void dc_lcd_buttons(void);
 static void dc_lcd_base(void);
