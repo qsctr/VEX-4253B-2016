@@ -1,9 +1,9 @@
 void base_set(int fr, int br, int bl, int fl) {
 
-    motor[FR] = fr;
-    motor[BR] = br;
-    motor[BL] = bl;
-    motor[FL] = fl;
+    motor[BFR] = fr;
+    motor[BBR] = br;
+    motor[BBL] = bl;
+    motor[BFL] = fl;
 
 }
 

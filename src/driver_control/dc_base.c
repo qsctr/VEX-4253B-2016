@@ -44,10 +44,10 @@ void dc_base() {
 
 	    }
 
-	    motor[FL] = + y + x + r;
-	    motor[FR] = + y - x - r;
-	    motor[BR] = + y + x - r;
-	    motor[BL] = + y - x + r;
+	    motor[BFL] = + y + x + r;
+	    motor[BFR] = + y - x - r;
+	    motor[BBR] = + y + x - r;
+	    motor[BBL] = + y - x + r;
 
     }
 
@@ -58,7 +58,7 @@ void dc_base() {
 
 void dc_base_mode_next() {
 
-    motor[FL] = motor[FR] = motor[BR] = motor[BL] = 0;
+    motor[BFL] = motor[BFR] = motor[BBR] = motor[BBL] = 0;
 	dc_base_mode++;
 	if (dc_base_mode == DC_BASE_MODE_OVER)
 	    dc_base_mode = DC_BASE_MODE_OFF;

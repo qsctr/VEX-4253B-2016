@@ -42,15 +42,15 @@ void a_base_stop(void) {
 
 int a_base_encoders_avg(void) {
 
-    return (a_abs_encoder(FR) + a_abs_encoder(BR) + a_abs_encoder(BL) + a_abs_encoder(FL)) / 4;
+    return (a_abs_encoder(BFR) + a_abs_encoder(BBR) + a_abs_encoder(BBL) + a_abs_encoder(BFL)) / 4;
 
 }
 
 void a_base_encoders_reset(void) {
 
-    resetMotorEncoder(FR);
-    resetMotorEncoder(BR);
-    resetMotorEncoder(BL);
-    resetMotorEncoder(FL);
+    resetMotorEncoder(BFR);
+    resetMotorEncoder(BBR);
+    resetMotorEncoder(BBL);
+    resetMotorEncoder(BFL);
 
 }
