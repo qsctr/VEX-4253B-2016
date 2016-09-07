@@ -13,4 +13,6 @@ task autonomous() {
 
     startTask(a_lcd);
 
+    release_intake();
+
 }
