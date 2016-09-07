@@ -3,6 +3,10 @@
 void base_set(int fr, int br, int bl, int fl);
 void base_set(int power);
 
+#define DUMP_UP           127
+#define DUMP_DOWN         -60
+#define DUMP_HOLD         15
+
 void dump_set(int x);
 
 void lift_set(int x);

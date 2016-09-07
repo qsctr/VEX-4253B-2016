@@ -42,7 +42,7 @@ void a_base_stop(void) {
 
 int a_base_encoders_avg(void) {
 
-    return (a_abs_encoder(BFR) + a_abs_encoder(BBR) + a_abs_encoder(BBL) + a_abs_encoder(BFL)) / 4;
+    return (a_abs_encoder(BFR) + a_abs_encoder(BBR) + a_abs_encoder(BBL) /* + a_abs_encoder(BFL) it's broken */ ) / 4;
 
 }
 
