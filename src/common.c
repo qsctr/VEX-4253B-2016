@@ -16,3 +16,14 @@ void lift_set(int x);
 
 void lcd_voltage(void);
 void lcd_clear(void);
+
+
+
+// Get rid of annoying "unreferenced function" warnings
+static void DO_NOT_CALL_THIS_FUNCTION(void) {
+
+    DO_NOT_CALL_THIS_FUNCTION();
+    UserControlCodePlaceholderForTesting();
+    AutonomousCodePlaceholderForTesting();
+
+}
