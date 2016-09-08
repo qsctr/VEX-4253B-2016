@@ -23,6 +23,8 @@ void a_dump_to_ground(void) {
 
 int a_dump_pots_avg(void) {
 
-    return (SensorValue(DumpPotL) + SensorValue(DumpPotR)) / 2;
+    return SensorValue(DumpPotR);
+
+    // return ((SensorValue(DumpPotL) - 35) + SensorValue(DumpPotR)) / 2;
 
 }
