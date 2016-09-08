@@ -10,10 +10,10 @@ void a_base_stop(void);
 int  a_base_encoders_avg(void);
 void a_base_encoders_reset(void);
 
-#define DUMP_HEIGHT_GROUND 0
-#define DUMP_HEIGHT_LOW    1000
-#define DUMP_HEIGHT_MID    2000
-#define DUMP_HEIGHT_HIGH   3000
+#define DUMP_HEIGHT_GROUND 3250
+#define DUMP_HEIGHT_LOW    2950
+#define DUMP_HEIGHT_MID    2500
+#define DUMP_HEIGHT_HIGH   1750
 
 void a_dump_to(int height);
 void a_dump_to_ground(void);

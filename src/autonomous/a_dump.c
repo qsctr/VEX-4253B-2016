@@ -3,12 +3,12 @@ void a_dump_to(int height) {
     if (a_dump_pots_avg() == height)
         return;
 
-    if (a_dump_pots_avg() < height) {
+    if (a_dump_pots_avg() > height) {
         dump_set(DUMP_UP);
-        while (a_dump_pots_avg() < height);
+        while (a_dump_pots_avg() > height);
     } else {
         dump_set(DUMP_DOWN);
-        while (a_dump_pots_avg() > height);
+        while (a_dump_pots_avg() < height);
     }
     dump_set(DUMP_HOLD);
 
