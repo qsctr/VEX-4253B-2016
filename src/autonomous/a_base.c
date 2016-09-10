@@ -24,13 +24,13 @@ void a_base_translate_right(void) {
 
 void a_base_rotate_left(void) {
 
-    base_set(BASE_SPEED_FULL, BASE_SPEED_FULL, -BASE_SPEED_FULL, -BASE_SPEED_FULL);
+    base_set(BASE_SPEED_HALF, BASE_SPEED_HALF, -BASE_SPEED_HALF, -BASE_SPEED_HALF);
 
 }
 
 void a_base_rotate_right(void) {
 
-    base_set(-BASE_SPEED_FULL, -BASE_SPEED_FULL, BASE_SPEED_FULL, BASE_SPEED_FULL);
+    base_set(-BASE_SPEED_HALF, -BASE_SPEED_HALF, BASE_SPEED_HALF, BASE_SPEED_HALF);
 
 }
 

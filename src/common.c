@@ -1,4 +1,5 @@
 #define BASE_SPEED_FULL   127
+#define BASE_SPEED_HALF   (BASE_SPEED_FULL / 2)
 
 void base_set(int fr, int br, int bl, int fl);
 void base_set(int power);
