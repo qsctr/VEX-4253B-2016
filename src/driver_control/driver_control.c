@@ -13,7 +13,7 @@ task usercontrol() {
         dc_dump();
         dc_lift();
         dc_lcd();
-        sleep(20);
+        sleep(50);
     }
 
 }
