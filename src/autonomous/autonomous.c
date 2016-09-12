@@ -14,6 +14,7 @@ task autonomous() {
     startTask(a_lcd);
 
     a_base_backward();
+    a_base_encoders_reset();
     while (a_base_encoders_avg() < 100);
     a_base_stop();
     a_dump_to(DUMP_HEIGHT_LOW);
@@ -22,13 +23,28 @@ task autonomous() {
     a_base_encoders_reset();
     while (a_base_encoders_avg() < 700);
     a_base_stop();
+    sleep(500);
     a_dump_to(DUMP_HEIGHT_LOW);
     a_base_forward();
     a_base_encoders_reset();
+    for (int i = 0; i < 5; i++) {
+        while (a_base_encoders_avg() < 800);
+        a_base_stop();
+        sleep(3000);
+        a_base_backward();
+        dump_set(DUMP_UP);
+        a_base_encoders_reset();
+        while (a_base_encoders_avg() < 800);
+        a_base_stop();
+        sleep(500);
+        a_dump_to(DUMP_HEIGHT_LOW);
+        a_base_forward();
+        a_base_encoders_reset();
+    }
     while (a_base_encoders_avg() < 100);
     a_base_rotate_left();
     a_base_encoders_reset();
-    while (a_base_encoders_avg() < 190);
+    while (a_base_encoders_avg() < 300);
     a_base_stop();
     a_dump_to_ground();
     a_base_backward();
