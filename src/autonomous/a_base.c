@@ -1,12 +1,12 @@
 void a_base_forward(void) {
 
-    base_set(BASE_SPEED_FULL);
+    base_set(BASE_SPEED_HALF);
 
 }
 
 void a_base_backward(void) {
 
-    base_set(-BASE_SPEED_FULL);
+    base_set(-BASE_SPEED_HALF);
 
 }
 
