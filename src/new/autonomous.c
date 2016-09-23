@@ -10,12 +10,22 @@
 
 ====================================================================================================== */
 
+static void a_base_encoders_reset(void);
+
 void pre_auton()
 {
-
+    a_base_encoders_reset();
 }
 
 task autonomous()
 {
 
+}
+
+static void a_base_encoders_reset()
+{
+    resetMotorEncoder(mBaseFL);
+    resetMotorEncoder(mBaseFR);
+    resetMotorEncoder(mBaseBL);
+    resetMotorEncoder(mBaseBR);
 }
