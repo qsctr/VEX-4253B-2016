@@ -10,16 +10,19 @@
 
 ====================================================================================================== */
 
-#define JOYSTICK_DRIVE vexRT[Ch3]
-#define JOYSTICK_STRAFE vexRT[Ch4]
-#define JOYSTICK_ROTATE vexRT[Ch1]
+#define STRAIGHT(ch) (abs(vexRT[ch]) < 10 ? 0 : vexRT[ch])
+#define JOYSTICK_DRIVE STRAIGHT(Ch3)
+#define JOYSTICK_STRAFE STRAIGHT(Ch4)
+#define JOYSTICK_ROTATE STRAIGHT(Ch1)
 
 static void dc_base(void);
 
 task usercontrol()
 {
-    dc_base();
-    sleep(20);
+    while (1) {
+	    dc_base();
+	    sleep(20);
+    }
 }
 
 static void dc_base()
