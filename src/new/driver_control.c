@@ -10,7 +10,7 @@
 
 ====================================================================================================== */
 
-#define STRAIGHT(ch) (abs(vexRT[ch]) < 10 ? 0 : vexRT[ch])
+#define STRAIGHT(ch) (abs(vexRT[ch]) < 20 ? 0 : vexRT[ch])
 #define JOYSTICK_DRIVE STRAIGHT(Ch3)
 #define JOYSTICK_STRAFE STRAIGHT(Ch4)
 #define JOYSTICK_ROTATE STRAIGHT(Ch1)
