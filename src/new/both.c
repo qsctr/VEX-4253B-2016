@@ -13,6 +13,7 @@
 void base_main_set(int x);
 void base_strafe_set(int x);
 void base_rotate(int x);
+void arm_move(int x);
 
 void base_main_set(int x)
 {
@@ -28,4 +29,8 @@ void base_rotate(int x)
 {
     motor[mBaseFL] = motor[mBaseBL] = x;
     motor[mBaseFR] = motor[mBaseBR] = -x;
+}
+
+void arm_move(int x) {
+    motor[mArm1] = motor[mArm2] = motor[mArm3] = x;
 }
