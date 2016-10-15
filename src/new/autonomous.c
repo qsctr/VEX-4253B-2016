@@ -12,7 +12,7 @@
 
 static void a_base_encoders_reset(void);
 
-void pre_auton()
+void pre_auton(void)
 {
     a_base_encoders_reset();
 }
@@ -22,7 +22,7 @@ task autonomous()
 
 }
 
-static void a_base_encoders_reset()
+static void a_base_encoders_reset(void)
 {
     resetMotorEncoder(mBaseFL);
     resetMotorEncoder(mBaseFR);

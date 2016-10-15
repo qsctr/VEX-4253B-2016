@@ -33,7 +33,7 @@ task usercontrol()
     }
 }
 
-static void dc_base()
+static void dc_base(void)
 {
     if (JOYSTICK_ROTATE) {
         base_rotate(JOYSTICK_ROTATE);
@@ -43,7 +43,7 @@ static void dc_base()
     }
 }
 
-static void dc_arm()
+static void dc_arm(void)
 {
     if (JOYSTICK_ARM_UP) {
         arm_move(-127);
@@ -54,7 +54,7 @@ static void dc_arm()
     }
 }
 
-static void dc_claw()
+static void dc_claw(void)
 {
     if (JOYSTICK_CLAW_OPEN) {
         claw_move(50);
