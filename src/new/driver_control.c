@@ -16,15 +16,19 @@
 #define JOYSTICK_ROTATE        STRAIGHT(Ch1)
 #define JOYSTICK_ARM_UP        vexRT[Btn6U]
 #define JOYSTICK_ARM_DOWN      vexRT[Btn6D]
+#define JOYSTICK_CLAW_OPEN     vexRT[Btn5U]
+#define JOYSTICK_CLAW_CLOSE    vexRT[Btn5D]
 
 static void dc_base(void);
 static void dc_arm(void);
+static void dc_claw(void);
 
 task usercontrol()
 {
     while (1) {
 	    dc_base();
 	    dc_arm();
+	    dc_claw();
 	    sleep(20);
     }
 }
@@ -47,5 +51,16 @@ static void dc_arm()
         arm_move(127);
     } else {
         arm_move(0);
+    }
+}
+
+static void dc_claw()
+{
+    if (JOYSTICK_CLAW_OPEN) {
+        claw_move(50);
+    } else if (JOYSTICK_CLAW_CLOSE) {
+        claw_move(-50);
+    } else {
+        claw_move(0);
     }
 }
