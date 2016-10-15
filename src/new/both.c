@@ -32,5 +32,5 @@ void base_rotate(int x)
 }
 
 void arm_move(int x) {
-    motor[mArm1] = motor[mArm2] = motor[mArm3] = x;
+    motor[mArm1] = motor[mArm2] = motor[mArm3] = motor[mArm4] = x;
 }
