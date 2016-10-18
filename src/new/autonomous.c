@@ -24,8 +24,7 @@ task autonomous()
 
 static void a_base_encoders_reset(void)
 {
-    resetMotorEncoder(mBaseFL);
-    resetMotorEncoder(mBaseFR);
-    resetMotorEncoder(mBaseBL);
-    resetMotorEncoder(mBaseBR);
+    FOR_EACH(tMotor, m, base_motors, {
+        resetMotorEncoder(m);
+    })
 }
