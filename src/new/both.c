@@ -30,6 +30,7 @@ void arm_move(motor_power x);
 void claw_move(motor_power x);
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
+tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
 
 void base_main_set(motor_power x)
 {
@@ -51,7 +52,9 @@ void base_rotate(motor_power x)
 
 void arm_move(motor_power x)
 {
-    motor[mArm1] = motor[mArm2] = motor[mArm3] = motor[mArm4] = x;
+    FOR_EACH(tMotor, m, arm_motors, {
+        motor[m] = x;
+    })
 }
 
 void claw_move(motor_power x)
