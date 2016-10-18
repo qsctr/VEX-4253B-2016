@@ -23,41 +23,41 @@
 
 typedef int motor_power;
 
-void base_main_set(motor_power x);
-void base_strafe_set(motor_power x);
-void base_rotate(motor_power x);
-void arm_move(motor_power x);
-void claw_move(motor_power x);
+void set_base_drive(motor_power x);
+void set_base_strafe(motor_power x);
+void set_base_rotate(motor_power x);
+void set_arm(motor_power x);
+void set_claw(motor_power x);
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
 tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
 
-void base_main_set(motor_power x)
+void set_base_drive(motor_power x)
 {
     FOR_EACH(tMotor, m, base_motors, {
-        motor[m] = 100;
+        motor[m] = x;
     })
 }
 
-void base_strafe_set(motor_power x)
+void set_base_strafe(motor_power x)
 {
     motor[mBaseStrafe] = x;
 }
 
-void base_rotate(motor_power x)
+void set_base_rotate(motor_power x)
 {
     motor[mBaseFL] = motor[mBaseBL] = x;
     motor[mBaseFR] = motor[mBaseBR] = -x;
 }
 
-void arm_move(motor_power x)
+void set_arm(motor_power x)
 {
     FOR_EACH(tMotor, m, arm_motors, {
         motor[m] = x;
     })
 }
 
-void claw_move(motor_power x)
+void set_claw(motor_power x)
 {
     motor[mClaw] = x;
 }

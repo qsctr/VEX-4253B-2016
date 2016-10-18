@@ -36,31 +36,31 @@ task usercontrol()
 static void dc_base(void)
 {
     if (JOYSTICK_ROTATE) {
-        base_rotate(JOYSTICK_ROTATE);
+        set_base_rotate(JOYSTICK_ROTATE);
     } else {
-        base_main_set(JOYSTICK_DRIVE);
-        base_strafe_set(JOYSTICK_STRAFE);
+        set_base_drive(JOYSTICK_DRIVE);
+        set_base_strafe(JOYSTICK_STRAFE);
     }
 }
 
 static void dc_arm(void)
 {
     if (JOYSTICK_ARM_UP) {
-        arm_move(-127);
+        set_arm(-127);
     } else if (JOYSTICK_ARM_DOWN) {
-        arm_move(127);
+        set_arm(127);
     } else {
-        arm_move(0);
+        set_arm(0);
     }
 }
 
 static void dc_claw(void)
 {
     if (JOYSTICK_CLAW_OPEN) {
-        claw_move(-127);
+        set_claw(-127);
     } else if (JOYSTICK_CLAW_CLOSE) {
-        claw_move(127);
+        set_claw(127);
     } else {
-        claw_move(0);
+        set_claw(0);
     }
 }
