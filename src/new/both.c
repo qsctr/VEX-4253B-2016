@@ -10,6 +10,16 @@
 
 ====================================================================================================== */
 
+#define LENGTH(arr)                        (sizeof(arr) / sizeof(arr[0]))
+#define FOR_EACH(type, x, arr, block)      {                                        \
+                                               type x;                              \
+                                               for (int for_each_internal = 0;      \
+                                                   for_each_internal < LENGTH(arr); \
+                                                   for_each_internal++) {           \
+                                                       x = arr[for_each_internal];  \
+                                                       block                        \
+                                               }                                    \
+
 typedef int motor_power;
 
 void base_main_set(motor_power x);
@@ -18,9 +28,13 @@ void base_rotate(motor_power x);
 void arm_move(motor_power x);
 void claw_move(motor_power x);
 
+tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
+
 void base_main_set(motor_power x)
 {
-    motor[mBaseFL] = motor[mBaseFR] = motor[mBaseBL] = motor[mBaseBR] = x;
+    FOR_EACH(tMotor, m, base_motors, {
+        motor[m] = 100;
+    })
 }
 
 void base_strafe_set(motor_power x)
