@@ -57,9 +57,9 @@ static void dc_arm(void)
 static void dc_claw(void)
 {
     if (JOYSTICK_CLAW_OPEN) {
-        claw_move(50);
+        claw_move(-127);
     } else if (JOYSTICK_CLAW_CLOSE) {
-        claw_move(-50);
+        claw_move(127);
     } else {
         claw_move(0);
     }
