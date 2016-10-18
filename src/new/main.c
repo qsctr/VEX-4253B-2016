@@ -6,7 +6,7 @@
 #pragma config(Sensor, I2C_2,  eBaseFR,        sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_3,  eBaseBL,        sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_4,  eBaseBR,        sensorQuadEncoderOnI2CPort,    , AutoAssign )
-#pragma config(Sensor, I2C_5,  eBaseC,         sensorQuadEncoderOnI2CPort,    , AutoAssign )
+#pragma config(Sensor, I2C_5,  eBaseStrafe,    sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Motor,  port1,           mBaseStrafe,   tmotorVex393_HBridge, openLoop, encoderPort, I2C_5)
 #pragma config(Motor,  port2,           mBaseFL,       tmotorVex393TurboSpeed_MC29, openLoop, encoderPort, I2C_1)
 #pragma config(Motor,  port3,           mBaseFR,       tmotorVex393TurboSpeed_MC29, openLoop, reversed, encoderPort, I2C_2)
