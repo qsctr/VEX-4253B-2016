@@ -37,3 +37,5 @@
 #include "both.c"
 #include "autonomous.c"
 #include "driver_control.c"
+
+// Current status of robot: terrible
