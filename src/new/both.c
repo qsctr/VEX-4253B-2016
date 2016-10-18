@@ -19,6 +19,7 @@
                                                        x = arr[for_each_internal];  \
                                                        block                        \
                                                }                                    \
+                                           }
 
 typedef int motor_power;
 
