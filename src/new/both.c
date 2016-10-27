@@ -28,6 +28,7 @@ void set_base_strafe(motor_power x);
 void set_base_rotate(motor_power x);
 void set_arm(motor_power x);
 void set_claw(motor_power x);
+void update_lcd();
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
 tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
@@ -60,4 +61,28 @@ void set_arm(motor_power x)
 void set_claw(motor_power x)
 {
     motor[mClaw] = x;
+}
+
+/* ----------------
+  |BATTERY COR=X.XX|
+  |BAC=X.XX PE=X.XX|
+   ---------------- */
+
+void init_lcd()
+{
+    clearLCDLine(0);
+    clearLCDLine(1);
+    displayLCDString(0, 0, "BATTERY COR=X.XX");
+    displayLCDString(1, 0, "BAC=X.XX PE=X.XX");
+}
+
+void update_lcd()
+{
+	static string s;
+	sprintf(s, "%1.2f", nImmediateBatteryLevel * 0.001);
+	displayLCDString(0, 12, s);
+	sprintf(s, "%1.2f", BackupBatteryLevel * 0.001);
+	displayLCDString(1, 4, s);
+	sprintf(s, "%1.2f", SensorValue(powerExpander) / 280.0);
+	displayLCDString(1, 12, s);
 }

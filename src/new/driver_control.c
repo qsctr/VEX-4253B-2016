@@ -10,7 +10,7 @@
 
 ====================================================================================================== */
 
-#define STRAIGHT(ch)           (abs(vexRT[ch]) < 20 ? 0 : vexRT[ch])
+#define STRAIGHT(ch)           (abs(vexRT[ch]) < 40 ? 0 : vexRT[ch])
 #define JOYSTICK_DRIVE         STRAIGHT(Ch3)
 #define JOYSTICK_STRAFE        STRAIGHT(Ch4)
 #define JOYSTICK_ROTATE        STRAIGHT(Ch1)
@@ -25,10 +25,12 @@ static void dc_claw(void);
 
 task usercontrol()
 {
+    init_lcd();
     while (1) {
 	    dc_base();
 	    dc_arm();
 	    dc_claw();
+	    update_lcd();
 	    sleep(20);
     }
 }
