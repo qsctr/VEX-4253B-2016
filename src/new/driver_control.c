@@ -45,10 +45,10 @@ static void dc_base(void)
 
 static void dc_arm(void)
 {
-    if (JOYSTICK_ARM_UP) {
-        set_arm(-127);
-    } else if (JOYSTICK_ARM_DOWN) {
+    if (JOYSTICK_ARM_UP && SensorValue(potArm) < 2400) {
         set_arm(127);
+    } else if (JOYSTICK_ARM_DOWN) {
+        set_arm(-127);
     } else {
         set_arm(0);
     }
@@ -57,9 +57,9 @@ static void dc_arm(void)
 static void dc_claw(void)
 {
     if (JOYSTICK_CLAW_OPEN) {
-        set_claw(-127);
-    } else if (JOYSTICK_CLAW_CLOSE) {
         set_claw(127);
+    } else if (JOYSTICK_CLAW_CLOSE) {
+        set_claw(-127);
     } else {
         set_claw(0);
     }
