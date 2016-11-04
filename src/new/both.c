@@ -31,7 +31,9 @@ void set_base_strafe(motor_power x);
 void set_base_rotate(motor_power x);
 void set_arm(motor_power x);
 void set_claw(motor_power x);
-void update_lcd();
+task open_claw();
+void init_lcd(void);
+void update_lcd(void);
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
 tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
@@ -77,7 +79,6 @@ task open_claw()
     while (SensorValue(potClaw) > 600);
     motor[mClaw] = 0;
     claw_in_use = false;
-
 }
 
 /* ----------------
@@ -85,7 +86,7 @@ task open_claw()
   |BAC=X.XX PE=X.XX|
    ---------------- */
 
-void init_lcd()
+void init_lcd(void)
 {
     clearLCDLine(0);
     clearLCDLine(1);
@@ -93,7 +94,7 @@ void init_lcd()
     displayLCDString(1, 0, "BAC=X.XX PE=X.XX");
 }
 
-void update_lcd()
+void update_lcd(void)
 {
 	static string s;
 	sprintf(s, "%1.2f", nImmediateBatteryLevel * 0.001);
