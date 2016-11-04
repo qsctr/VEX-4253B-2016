@@ -54,11 +54,7 @@ static void dc_arm(void)
     if (current_sensor_value > CLAW_OPEN_POSITION && prev_sensor_value <= CLAW_OPEN_POSITION) {
         startTask(open_claw);
     }
-    if (JOYSTICK_ARM_UP) {
-        if (dc_limit_lift && current_sensor_value > ARM_LIMIT_POSITION) {
-	        set_arm(0);
-	        return;
-	    }
+    if (JOYSTICK_ARM_UP && !(dc_limit_lift && current_sensor_value > ARM_LIMIT_POSITION)) {
         set_arm(127);
     } else if (JOYSTICK_ARM_DOWN) {
         set_arm(-127);
