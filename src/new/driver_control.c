@@ -47,13 +47,22 @@ static void dc_base(void)
 
 static void dc_arm(void)
 {
-    if (JOYSTICK_ARM_UP && SensorValue(potArm) < 2400) {
-        set_arm(127);
+    static int prev_sensor_value = 4096;
+    if (JOYSTICK_ARM_UP) {
+        if (SensorValue(potArm) > CLAW_OPEN_POSITION) {
+            if (prev_sensor_value <= CLAW_OPEN_POSITION) {
+                startTask(open_claw);
+            }
+            set_arm(0);
+        } else {
+            set_arm(127);
+        }
     } else if (JOYSTICK_ARM_DOWN) {
         set_arm(-127);
     } else {
         set_arm(0);
     }
+    prev_sensor_value = SensorValue(potArm);
 }
 
 static void dc_claw(void)

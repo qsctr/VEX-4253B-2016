@@ -20,6 +20,7 @@
                                                        block                        \
                                                }                                    \
                                            }
+#define CLAW_OPEN_POSITION                 2500
 
 typedef int motor_power;
 
@@ -58,9 +59,23 @@ void set_arm(motor_power x)
     })
 }
 
+static bool claw_in_use = false;
+
 void set_claw(motor_power x)
 {
-    motor[mClaw] = x;
+    if (!claw_in_use) {
+        motor[mClaw] = x;
+    }
+}
+
+task open_claw()
+{
+    claw_in_use = true;
+    motor[mClaw] = 127;
+    while (SensorValue(potClaw) > 600);
+    motor[mClaw] = 0;
+    claw_in_use = false;
+
 }
 
 /* ----------------
