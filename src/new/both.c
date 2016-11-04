@@ -20,7 +20,9 @@
                                                        block                        \
                                                }                                    \
                                            }
-#define CLAW_OPEN_POSITION                 2500
+
+#define CLAW_OPEN_POSITION                 2200
+#define ARM_LIMIT_POSITION                 2700
 
 typedef int motor_power;
 
@@ -33,6 +35,8 @@ void update_lcd();
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
 tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
+
+static bool claw_in_use = false;
 
 void set_base_drive(motor_power x)
 {
@@ -58,8 +62,6 @@ void set_arm(motor_power x)
         motor[m] = x;
     })
 }
-
-static bool claw_in_use = false;
 
 void set_claw(motor_power x)
 {

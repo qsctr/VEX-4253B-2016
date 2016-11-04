@@ -23,6 +23,8 @@ static void dc_base(void);
 static void dc_arm(void);
 static void dc_claw(void);
 
+bool dc_limit_lift = true;
+
 task usercontrol()
 {
     init_lcd();
@@ -48,21 +50,22 @@ static void dc_base(void)
 static void dc_arm(void)
 {
     static int prev_sensor_value = 4096;
+    int current_sensor_value = SensorValue(potArm);
+    if (current_sensor_value > CLAW_OPEN_POSITION && prev_sensor_value <= CLAW_OPEN_POSITION) {
+        startTask(open_claw);
+    }
     if (JOYSTICK_ARM_UP) {
-        if (SensorValue(potArm) > CLAW_OPEN_POSITION) {
-            if (prev_sensor_value <= CLAW_OPEN_POSITION) {
-                startTask(open_claw);
-            }
-            set_arm(0);
-        } else {
-            set_arm(127);
-        }
+        if (dc_limit_lift && current_sensor_value > ARM_LIMIT_POSITION) {
+	        set_arm(0);
+	        return;
+	    }
+        set_arm(127);
     } else if (JOYSTICK_ARM_DOWN) {
         set_arm(-127);
     } else {
         set_arm(0);
     }
-    prev_sensor_value = SensorValue(potArm);
+    prev_sensor_value = current_sensor_value;
 }
 
 static void dc_claw(void)
