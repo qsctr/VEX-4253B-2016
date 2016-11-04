@@ -21,8 +21,8 @@
                                                }                                    \
                                            }
 
-#define CLAW_OPEN_POSITION                 2200
-#define ARM_LIMIT_POSITION                 2700
+#define CLAW_OPEN_POSITION     2200
+#define ARM_LIMIT_POSITION     2700
 
 typedef int motor_power;
 
