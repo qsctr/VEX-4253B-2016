@@ -78,7 +78,7 @@ static void dc_arm(void)
 
 static void dc_limit_arm_check(void)
 WITH_PREVIOUS(int, TOGGLE_LIMIT_ARM, 0, {
-    if (current && previous) {
+    if (current && !previous) {
         dc_limit_arm = !dc_limit_arm;
         PLAY_TOGGLE_TONE(dc_limit_arm);
     }
