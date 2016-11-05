@@ -27,6 +27,7 @@
 #define BUTTON_CLAW_CLOSE      vexRT[Btn5D]
 #define TOGGLE_LIMIT_ARM       vexRT[Btn8U]
 #define TOGGLE_CLAW_ALWAYS_ON  vexRT[Btn7U]
+#define TONE_LENGTH            50
 
 static void dc_base(void);
 static void dc_arm(void);
@@ -34,7 +35,7 @@ static void dc_limit_arm_check(void);
 static void dc_claw(void);
 static void dc_claw_auto_open(void);
 static void dc_claw_always_on_check(void);
-static void dc_play_toggle_tone(bool on);
+static void dc_lcd_buttons(void);
 
 static bool dc_limit_arm = true;
 static bool dc_claw_always_on = true;
@@ -49,6 +50,7 @@ task usercontrol()
 	    dc_claw();
 	    dc_claw_auto_open();
 	    dc_claw_always_on_check();
+	    dc_lcd_buttons();
 	    update_lcd();
 	    sleep(20);
     }
@@ -79,7 +81,7 @@ static void dc_limit_arm_check(void)
 WITH_PREVIOUS(int, TOGGLE_LIMIT_ARM, 0, {
     if (current && !previous) {
         dc_limit_arm = !dc_limit_arm;
-        dc_play_toggle_tone(dc_limit_arm);
+        playImmediateTone(dc_limit_arm ? 1200 : 700, TONE_LENGTH);
     }
 })
 
@@ -90,7 +92,7 @@ static void dc_claw(void)
     } else if (BUTTON_CLAW_CLOSE) {
         set_claw(-127);
     } else if (dc_claw_always_on) {
-        set_claw(-20);
+        set_claw(-10);
     } else {
         set_claw(0);
     }
@@ -107,11 +109,21 @@ static void dc_claw_always_on_check(void)
 WITH_PREVIOUS(int, TOGGLE_CLAW_ALWAYS_ON, 0, {
     if (current && !previous) {
         dc_claw_always_on = !dc_claw_always_on;
-        dc_play_toggle_tone(dc_claw_always_on);
+        playImmediateTone(dc_claw_always_on ? 1000 : 600, TONE_LENGTH);
     }
 })
 
-static void dc_play_toggle_tone(bool on)
+static void dc_lcd_buttons(void)
 {
-    playImmediateTone(on ? 1000 : 500, 70);
+    if (nLCDButtons == 1) {
+        playImmediateTone(523, 20);
+    } else if (nLCDButtons == 3) {
+        playImmediateTone(554, 20);
+    } else if (nLCDButtons == 2) {
+        playImmediateTone(587, 20);
+    } else if (nLCDButtons == 6) {
+        playImmediateTone(622, 20);
+    } else if (nLCDButtons == 4) {
+        playImmediateTone(659, 20);
+    }
 }
