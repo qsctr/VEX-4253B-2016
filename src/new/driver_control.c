@@ -27,8 +27,6 @@
 #define BUTTON_CLAW_CLOSE      vexRT[Btn5D]
 #define TOGGLE_LIMIT_ARM       vexRT[Btn8U]
 #define TOGGLE_CLAW_ALWAYS_ON  vexRT[Btn7U]
-#define TONE_LENGTH            70
-#define PLAY_TOGGLE_TONE(on)   playImmediateTone(on ? 1000 : 500, TONE_LENGTH)
 
 static void dc_base(void);
 static void dc_arm(void);
@@ -36,6 +34,7 @@ static void dc_limit_arm_check(void);
 static void dc_claw(void);
 static void dc_claw_auto_open(void);
 static void dc_claw_always_on_check(void);
+static void dc_play_toggle_tone(bool on);
 
 static bool dc_limit_arm = true;
 static bool dc_claw_always_on = true;
@@ -80,7 +79,7 @@ static void dc_limit_arm_check(void)
 WITH_PREVIOUS(int, TOGGLE_LIMIT_ARM, 0, {
     if (current && !previous) {
         dc_limit_arm = !dc_limit_arm;
-        PLAY_TOGGLE_TONE(dc_limit_arm);
+        dc_play_toggle_tone(dc_limit_arm);
     }
 })
 
@@ -108,6 +107,11 @@ static void dc_claw_always_on_check(void)
 WITH_PREVIOUS(int, TOGGLE_CLAW_ALWAYS_ON, 0, {
     if (current && !previous) {
         dc_claw_always_on = !dc_claw_always_on;
-        PLAY_TOGGLE_TONE(dc_claw_always_on);
+        dc_play_toggle_tone(dc_claw_always_on);
     }
 })
+
+static void dc_play_toggle_tone(bool on)
+{
+    playImmediateTone(on ? 1000 : 500, 70);
+}
