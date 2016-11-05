@@ -104,3 +104,10 @@ void update_lcd(void)
 	sprintf(s, "%1.2f", SensorValue(powerExpander) / 280.0);
 	displayLCDString(1, 12, s);
 }
+
+static void do_not_call_this_function()
+{
+    UserControlCodePlaceholderForTesting();
+    AutonomousCodePlaceholderForTesting();
+    do_not_call_this_function();
+}
