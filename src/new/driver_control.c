@@ -88,12 +88,17 @@ WITH_PREVIOUS(int, TOGGLE_LIMIT_ARM, 0, {
 static void dc_claw(void)
 {
     if (BUTTON_CLAW_OPEN) {
-        set_claw(127);
+        if (SensorValue(potClaw) > 700) {
+            set_claw(127);
+        } else {
+            goto claw_off;
+        }
     } else if (BUTTON_CLAW_CLOSE) {
         set_claw(-127);
     } else if (dc_claw_always_on) {
-        set_claw(-10);
+        set_claw(-5);
     } else {
+        claw_off:
         set_claw(0);
     }
 }
@@ -114,16 +119,24 @@ WITH_PREVIOUS(int, TOGGLE_CLAW_ALWAYS_ON, 0, {
 })
 
 static void dc_lcd_buttons(void)
-{
-    if (nLCDButtons == 1) {
-        playImmediateTone(523, 20);
-    } else if (nLCDButtons == 3) {
-        playImmediateTone(554, 20);
-    } else if (nLCDButtons == 2) {
-        playImmediateTone(587, 20);
-    } else if (nLCDButtons == 6) {
-        playImmediateTone(622, 20);
-    } else if (nLCDButtons == 4) {
-        playImmediateTone(659, 20);
-    }
-}
+WITH_PREVIOUS(int, nLCDButtons, 0, {
+    if (previous != current) {
+	    if (current == 1) {
+	        playImmediateTone(523, 1000);
+	    } else if (current == 3) {
+	        playImmediateTone(698, 1000);
+	    } else if (current == 2) {
+	        playImmediateTone(587, 1000);
+	    } else if (current == 6) {
+	        playImmediateTone(784, 1000);
+	    } else if (current == 4) {
+	        playImmediateTone(659, 1000);
+	    } else if (current == 5) {
+	        playImmediateTone(880, 1000);
+	    } else if (current == 0) {
+	        clearSounds();
+	    } else if (current == 7) {
+	        playImmediateTone(988, 1000);
+	    }
+	}
+})
