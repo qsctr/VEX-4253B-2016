@@ -36,6 +36,7 @@ void init_lcd(void);
 void update_lcd(void);
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
+tMotor base_encoders[] = { mBaseFL, mBaseBL, mBaseBR };
 tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
 
 static bool claw_in_use = false;
@@ -76,7 +77,7 @@ task open_claw()
 {
     claw_in_use = true;
     motor[mClaw] = 127;
-    while (SensorValue(potClaw) > 600);
+    while (SensorValue(potClaw) > 700);
     motor[mClaw] = 0;
     claw_in_use = false;
 }
