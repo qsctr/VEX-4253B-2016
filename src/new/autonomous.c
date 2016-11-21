@@ -22,9 +22,38 @@ task autonomous()
 {
     set_base_drive(-127);
     set_arm(127);
+    while (a_base_encoders_avg() < 1500) {
+        if (SensorValue(potArm) > 2200) {
+            set_arm(0);
+        }
+    }
+    startTask(open_claw);
+    set_arm(0);
+    set_base_drive(127);
+    while (a_base_encoders_avg() > 1000);
+    set_base_drive(0);
+    set_arm(50);
+    while (SensorValue(potArm) < 2800);
+    set_arm(0);
+    set_base_drive(-127);
     while (a_base_encoders_avg() < 1500);
     set_base_drive(0);
+    set_arm(-50);
+    while (SensorValue(potArm) > 1000);
     set_arm(0);
+    set_base_drive(127);
+    while (a_base_encoders_avg() > 1200);
+    set_base_drive(0);
+    sleep(700);
+    set_base_strafe(-127);
+    while (abs(nMotorEncoder(mBaseStrafe)) < 600);
+    set_base_strafe(0);
+    set_arm(50);
+    while (SensorValue(potArm) < 2700);
+    set_arm(0);
+    set_base_drive(-127);
+    while (a_base_encoders_avg() < 1500);
+    set_base_drive(0);
 }
 
 static void a_base_encoders_reset(void)

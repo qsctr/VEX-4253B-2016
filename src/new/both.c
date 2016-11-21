@@ -36,7 +36,7 @@ void init_lcd(void);
 void update_lcd(void);
 
 tMotor base_motors[] = { mBaseFL, mBaseFR, mBaseBL, mBaseBR };
-tMotor base_encoders[] = { mBaseFL, mBaseBL, mBaseBR };
+tMotor base_encoders[] = { mBaseFR, mBaseBR };
 tMotor arm_motors[] = { mArmL1, mArmL2, mArmR1, mArmR2 };
 
 static bool claw_in_use = false;
