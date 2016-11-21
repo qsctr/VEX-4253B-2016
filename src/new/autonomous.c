@@ -18,6 +18,8 @@ void pre_auton(void)
     a_base_encoders_reset();
 }
 
+int asdf;
+
 task autonomous()
 {
     set_base_drive(-127);
@@ -39,14 +41,14 @@ task autonomous()
     while (a_base_encoders_avg() < 1500);
     set_base_drive(0);
     set_arm(-50);
-    while (SensorValue(potArm) > 1000);
+    while (SensorValue(potArm) > 1000 || SensorValue(potArm) < 500);
     set_arm(0);
     set_base_drive(127);
     while (a_base_encoders_avg() > 1200);
     set_base_drive(0);
     sleep(700);
     set_base_strafe(-127);
-    while (abs(nMotorEncoder(mBaseStrafe)) < 600);
+    while ((asdf = abs(nMotorEncoder(mBaseStrafe))) < 600);
     set_base_strafe(0);
     set_arm(50);
     while (SensorValue(potArm) < 2700);
@@ -54,6 +56,10 @@ task autonomous()
     set_base_drive(-127);
     while (a_base_encoders_avg() < 1500);
     set_base_drive(0);
+    sleep(1000);
+    set_arm(-50);
+    while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
+    set_arm(0);
 }
 
 static void a_base_encoders_reset(void)
