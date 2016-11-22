@@ -88,7 +88,7 @@ WITH_PREVIOUS(int, TOGGLE_LIMIT_ARM, 0, {
 static void dc_claw(void)
 {
     if (BUTTON_CLAW_OPEN) {
-        if (SensorValue(potClaw) > 700) {
+        if (SensorValue(potClaw) > 800) {
             set_claw(127);
         } else {
             goto claw_off;

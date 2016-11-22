@@ -77,7 +77,7 @@ task open_claw()
 {
     claw_in_use = true;
     motor[mClaw] = 127;
-    while (SensorValue(potClaw) > 700);
+    while (SensorValue(potClaw) > 1000);
     motor[mClaw] = 0;
     claw_in_use = false;
 }
