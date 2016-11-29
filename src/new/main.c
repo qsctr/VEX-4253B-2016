@@ -34,7 +34,11 @@
 #pragma autonomousDuration(15)
 #pragma userControlDuration(105)
 
-#define RIGHT_SIDE false
+#define NORMAL_MATCH
+// #define PROG_SKILLS
+
+#define LEFT_SIDE
+// #define RIGHT_SIDE
 
 #include "Vex_Competition_Includes.c"
 #include "both.c"
