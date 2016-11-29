@@ -1,8 +1,7 @@
-# VEX 4194B 2016 (Taipei American School)
+# VEX 4253B 2016 (Taipei American School)
 
-The code for team 4194B's VEX Starstruck robot
+The code for team 4253B's VEX Starstruck robot
 
-NOTE: We are not Projext, they have graduated. We are
 ```
 =========================================================================================================
    ___________________________________________________________________________________________________
