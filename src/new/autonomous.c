@@ -36,7 +36,7 @@ task autonomous()
     while (a_base_encoders_avg() > 1000);
     set_base_drive(0);
     set_arm(50);
-    while (SensorValue(potArm) < 2700);
+    while (SensorValue(potArm) < 2900);
     set_arm(0);
     set_base_drive(-127);
     while (a_base_encoders_avg() < 1500);
@@ -54,18 +54,33 @@ task autonomous()
 #ifdef RIGHT_SIDE
     set_base_strafe(-127);
 #endif
-    while (abs(nMotorEncoder(mBaseStrafe)) < 600);
+    while (abs(nMotorEncoder(mBaseStrafe)) < 750);
+    set_claw(-127);
     set_base_strafe(0);
-    set_arm(50);
-    while (SensorValue(potArm) < 2700);
-    set_arm(0);
+    while (SensorValue(potClaw)< 1800);
+    //set_arm(50)
     set_base_drive(-127);
-    while (a_base_encoders_avg() < 1500);
+    while(a_base_encoders_avg()<1500);
+    set_arm(70);
+    set_base_drive(0);
+    while (SensorValue(potArm) < 2900);
+    set_arm(0);
+    set_claw(127);
+    while (SensorValue(potClaw)>1100);
+    //while (a_base_encoders_avg() < 1500);
+    set_claw(0);
     set_base_drive(0);
     sleep(1000);
     set_arm(-50);
+#ifdef LEFT_SIDE
+		set_base_strafe(-127);
+#endif
+#ifdef RIGHT_SIDE
+		set_base_strafe(127);
+#endif
     while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
     set_arm(0);
+    set_base_strafe(0);
     set_base_drive(127);
     while (a_base_encoders_avg() > 300);
     set_base_drive(0);
@@ -140,7 +155,7 @@ task autonomous()
     set_base_drive(127);
     while (a_base_encoders_avg() > 1200);
     set_base_drive(0);
-    sleep(1000);
+    sleep(2000);
 #ifdef LEFT_SIDE
     set_base_strafe(127);
 #endif
@@ -152,14 +167,20 @@ task autonomous()
     set_arm(50);
     while (SensorValue(potArm) < 2700);
     set_arm(0);
-    set_base_drive(-127);
+    set_base_drive(127);
     while (a_base_encoders_avg() < 1500);
     set_base_drive(0);
     sleep(1000);
     set_arm(-50);
+#ifdef LEFT_SIDE
+	set_base_strafe(-127);
+#endif
+#ifdef RIGHT_SIDE
+	set_base_strafe(127);
+#endif
     while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
     set_arm(0);
-    set_base_drive(127);
+    set_base_drive(-127);
     while (a_base_encoders_avg() > 300);
     set_base_drive(0);
     set_claw(-127);
