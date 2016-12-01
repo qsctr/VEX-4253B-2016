@@ -54,11 +54,18 @@ task autonomous()
 #ifdef RIGHT_SIDE
     set_base_strafe(-127);
 #endif
-    while (abs(nMotorEncoder(mBaseStrafe)) < 750);
-    set_claw(-127);
+    unsigned long time = nPgmTime;
+    while (abs(nMotorEncoder(mBaseStrafe)) < 750) {
+        if (nPgmTime - time >= 1000) {
+            break;
+        }
+    }
     set_base_strafe(0);
+    set_base_drive(127);
+    while (a_base_encoders_avg() > 500);
+    set_base_drive(0);
+    set_claw(-127);
     while (SensorValue(potClaw) < 1800);
-    //set_arm(50)
     set_base_drive(-127);
     while (a_base_encoders_avg() < 1500);
     set_arm(70);
@@ -66,43 +73,20 @@ task autonomous()
     while (SensorValue(potArm) < 2900);
     set_arm(0);
     set_claw(127);
-    while (SensorValue(potClaw) > 1100);
-    // while (a_base_encoders_avg() < 1500);
-    set_claw(0);
-    set_base_drive(0);
-    sleep(1000);
-    set_arm(-50);
-#ifdef LEFT_SIDE
-    set_base_strafe(-127);
-#endif
-#ifdef RIGHT_SIDE
-    set_base_strafe(127);
-#endif
-    while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
-    set_arm(0);
-    set_base_strafe(0);
-    set_base_drive(127);
-    while (a_base_encoders_avg() > 300);
-    set_base_drive(0);
-    set_claw(-127);
-    while (SensorValue(potClaw) < 1700);
-    set_claw(0);
-    set_base_drive(-127);
-    set_arm(127);
-    while (a_base_encoders_avg() < 1200) {
-        if (SensorValue(potArm) > 2200) {
-            set_arm(0);
-        }
-    }
-    while (SensorValue(potArm) <= 2200);
     startTask(open_claw);
+    set_base_drive(127);
+    while (a_base_encoders_avg() > 1300);
+    set_base_drive(-127);
+    while (a_base_encoders_avg() < 1500);
     set_base_drive(0);
-    sleep(1000);
-    set_arm(-50);
+    set_arm(-127);
     while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
     set_arm(0);
+
 }
 #endif
+
+int asdf = 0;
 
 #ifdef PROG_SKILLS
 task autonomous()
@@ -114,6 +98,7 @@ task autonomous()
             set_arm(0);
         }
     }
+    set_base_drive(0);
     while (SensorValue(potArm) <= 2200);
     set_arm(0);
     set_claw(127);
@@ -124,7 +109,7 @@ task autonomous()
 	    while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
 	    set_arm(0);
 	    set_base_drive(127);
-	    while (a_base_encoders_avg() > 300);
+	    while (a_base_encoders_avg() > 1000);
 	    set_base_drive(0);
 	    sleep(3000);
 	    set_claw(-127);
@@ -137,6 +122,7 @@ task autonomous()
 	            set_arm(0);
 	        }
 	    }
+        set_base_drive(0);
 	    while (SensorValue(potArm) <= 2200);
 	    set_arm(0);
 	    set_claw(127);
@@ -144,7 +130,7 @@ task autonomous()
 	    set_claw(0);
     }
     set_arm(50);
-    while (SensorValue(potArm) < 2700);
+    while (SensorValue(potArm) < 2900);
     set_arm(0);
     set_base_drive(-127);
     while (a_base_encoders_avg() < 1500);
@@ -155,51 +141,68 @@ task autonomous()
     set_base_drive(127);
     while (a_base_encoders_avg() > 1200);
     set_base_drive(0);
-    sleep(2000);
-#ifdef LEFT_SIDE
-    set_base_strafe(127);
-#endif
-#ifdef RIGHT_SIDE
-    set_base_strafe(-127);
-#endif
-    while (abs(nMotorEncoder(mBaseStrafe)) < 600);
-    set_base_strafe(0);
-    set_arm(50);
-    while (SensorValue(potArm) < 2700);
-    set_arm(0);
-    set_base_drive(127);
-    while (a_base_encoders_avg() < 1500);
-    set_base_drive(0);
     sleep(1000);
-    set_arm(-50);
 #ifdef LEFT_SIDE
-    set_base_strafe(-127);
-#endif
-#ifdef RIGHT_SIDE
     set_base_strafe(127);
 #endif
-    while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
-    set_arm(0);
-    set_base_drive(-127);
-    while (a_base_encoders_avg() > 300);
-    set_base_drive(0);
-    set_claw(-127);
-    while (SensorValue(potClaw) < 1700);
-    set_claw(0);
-    set_base_drive(-127);
-    set_arm(127);
-    while (a_base_encoders_avg() < 1200) {
-        if (SensorValue(potArm) > 2200) {
-            set_arm(0);
+#ifdef RIGHT_SIDE
+    set_base_strafe(-127);
+#endif
+    unsigned long time = nPgmTime;
+    while (abs(nMotorEncoder(mBaseStrafe)) < 750) {
+        if (nPgmTime - time >= 1000) {
+            break;
         }
     }
-    while (SensorValue(potArm) <= 2200);
-    startTask(open_claw);
+    set_base_strafe(0);
+    asdf = a_base_encoders_avg();
+    set_base_drive(127);
+    // while (a_base_encoders_avg() > 800);
+    sleep(700);
     set_base_drive(0);
-    sleep(1000);
-    set_arm(-50);
+    asdf = 42;
+    set_claw(-127);
+    while (SensorValue(potClaw) < 1800);
+    set_base_drive(-127);
+    while (a_base_encoders_avg() < 1500);
+    set_arm(70);
+    set_base_drive(0);
+    while (SensorValue(potArm) < 2900);
+    set_arm(0);
+    set_claw(127);
+    startTask(open_claw);
+    set_base_drive(127);
+    while (a_base_encoders_avg() > 1300);
+    set_base_drive(-127);
+    while (a_base_encoders_avg() < 1500);
+    set_base_drive(0);
+    set_arm(-127);
     while (SensorValue(potArm) > 600 || SensorValue(potArm) < 500);
     set_arm(0);
+    set_base_drive(127);
+    while (a_base_encoders_avg() > 1400);
+    set_base_drive(0);
+    resetMotorEncoder(mBaseStrafe);
+#ifdef LEFT_SIDE
+    set_base_strafe(-127);
+#endif
+#ifdef RIGHT_SIDE
+    set_base_strafe(127);
+#endif
+    while (abs(nMotorEncoder(mBaseStrafe)) < 1800);
+    set_base_strafe(0);
+    set_base_drive(127);
+    sleep(500);
+    set_base_drive(0);
+    set_claw(-127);
+    sleep(2000);
+    set_base_drive(-127);
+    while (a_base_encoders_avg() < 1500);
+    set_base_drive(0);
+    set_arm(127);
+    while (SensorValue(potArm) < 2200);
+    set_arm(0);
+    startTask(open_claw);
 }
 #endif
 
