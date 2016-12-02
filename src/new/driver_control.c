@@ -38,7 +38,7 @@ static void dc_claw_always_on_check(void);
 static void dc_lcd_buttons(void);
 
 static bool dc_limit_arm = true;
-static bool dc_claw_always_on = true;
+static bool dc_claw_always_on = false;
 
 task usercontrol()
 {
@@ -89,12 +89,12 @@ static void dc_claw(void)
 {
     if (BUTTON_CLAW_OPEN) {
         if (SensorValue(potClaw) > 800) {
-            set_claw(127);
+            set_claw(100);
         } else {
             goto claw_off;
         }
     } else if (BUTTON_CLAW_CLOSE) {
-        set_claw(-127);
+        set_claw(-100);
     } else if (dc_claw_always_on) {
         set_claw(-5);
     } else {

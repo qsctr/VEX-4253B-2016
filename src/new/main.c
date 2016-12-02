@@ -34,8 +34,8 @@
 #pragma autonomousDuration(15)
 #pragma userControlDuration(105)
 
-// #define NORMAL_MATCH
-#define PROG_SKILLS
+#define NORMAL_MATCH
+// #define PROG_SKILLS
 
 #define LEFT_SIDE
 // #define RIGHT_SIDE
