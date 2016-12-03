@@ -37,7 +37,8 @@ task autonomous()
     while (SensorValue(potClaw) < 1800);
     set_claw(0);
     set_base_drive(127);
-    while (a_base_encoders_avg() > 1300);
+    // while (a_base_encoders_avg() > 1600);
+    sleep(200);
     set_base_drive(0);
     startTask(open_claw);
     set_arm(50);
