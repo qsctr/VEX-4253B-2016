@@ -37,8 +37,9 @@ task autonomous()
     while (SensorValue(potClaw) < 1800);
     set_claw(0);
     set_base_drive(127);
-    while (a_base_encoders_avg() > 1000);
+    while (a_base_encoders_avg() > 1300);
     set_base_drive(0);
+    startTask(open_claw);
     set_arm(50);
     while (SensorValue(potArm) < 2900);
     set_arm(0);
@@ -48,9 +49,9 @@ task autonomous()
     set_arm(-50);
     while (SensorValue(potArm) > 1000 || SensorValue(potArm) < 500);
     set_arm(0);
-    startTask(open_claw);
+    // startTask(open_claw);
     set_base_drive(127);
-    while (a_base_encoders_avg() > 1200);
+    while (a_base_encoders_avg() > 1300);
     set_base_drive(0);
     sleep(1000);
 #ifdef LEFT_SIDE
@@ -68,7 +69,7 @@ task autonomous()
     set_base_strafe(0);
     set_base_drive(127);
     time = nPgmTime;
-    while (nPgmTime - time <= 1000) {
+    while (nPgmTime - time <= 700) {
         if (a_base_encoders_avg() <= 500) {
             break;
         }
